@@ -132,11 +132,11 @@ export function CrearEquipo() {
             idPersona: loggedUser.idPersona,
           }
         })
-        .then((res) => {
+        .then((res) => res.data)
+        .then((equipo) => {
           successAlert();
-          return res.data;
+          navigate(`/equipo/${equipo.id}`)
         })
-        .then((equipo) => navigate(`/equipo/${equipo.id}`))
         .catch((err) => console.log({ err }));
     }
   };

@@ -194,7 +194,6 @@ function MiInformación() {
     const {
       target: { value },
     } = event;
-    console.log("------> valuess", value);
     setIntereses(value);
   };
 
@@ -252,13 +251,15 @@ function MiInformación() {
           },
         }
       )
-      .then((res) => dispatch(setUsuario(res.data)))
-      .then(() =>
+      .then((res) => res.data)
+      .then((usuario) =>{
+        dispatch(setUsuario(usuario))
         swal({
           title: "Perfil editado",
           icon: "success",
           timer: "2000",
         })
+      }
       )
       .catch((err) => console.log(err));
   };
